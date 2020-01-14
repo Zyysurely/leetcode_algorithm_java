@@ -9,6 +9,13 @@
  */
 import java.util.*;
 
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
 class Solution {
     // 转成lcs算法，就是一个找节点的问题，也就是遍历的问题
     public TreeNode lowestCommonAncestor_LCS(TreeNode root, TreeNode p, TreeNode q) {

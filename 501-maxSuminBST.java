@@ -1,14 +1,13 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+import java.util.*;
+
+
+class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode(int x) { val = x; }
+}
  // 中序遍历时是有序的，有序数组的众数问题
- import java.util.*;
 
  class Solution_501 {
     int pre=0, cur=0, max=0;
