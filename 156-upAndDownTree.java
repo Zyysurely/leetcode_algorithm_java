@@ -1,3 +1,5 @@
+
+// 先找到父节点，再一直向左找到root，因为左必存在，返回也必须返回root，也就是最左的
 class Solution_156 {
     public TreeNode upsideDownBinaryTree(TreeNode root) {
         return helper(null, root);
