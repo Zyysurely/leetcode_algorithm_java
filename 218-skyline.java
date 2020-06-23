@@ -51,3 +51,61 @@ class Solution_218 {
 
     }
 }
+
+
+class Solution {
+    public class Node{
+        int x;
+        boolean start;
+        int h;
+        public Node(int x, int h, boolean start) {
+            this.x = x;
+            this.h = h;
+            this.start = start;
+        }
+    }
+    public class NodeComparator implements Comparator<Node> {
+        @Override
+        public int compare(Node a, Node b) {
+            if(a.x != b.x) return a.x-b.x;
+            else {
+                if(a.start != b.start) return a.start? -1 : 1;
+                else return b.h-a.h;
+            }
+        }
+    }
+
+    public List<List<Integer>> getSkyline(int[][] buildings) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(buildings.length == 0) return res;
+        Node[] node = new Node[2*buildings.length];
+        int index = 0;
+        for(int i=0; i<buildings.length; i++) {
+            node[index++] = new Node(buildings[i][0], buildings[i][2], true);
+            node[index++] = new Node(buildings[i][1], buildings[i][2], false);
+        }
+        Arrays.sort(node, new NodeComparator());
+        PriorityQueue<Integer> pri = new PriorityQueue<Integer>((o1, o2) -> o2-o1);
+        int pre = 0, i=0;
+        while(i<node.length) {
+            Node cr = node[i];
+            while(i< node.length && cr.x == node[i].x) {
+                cr = node[i];
+                if(node[i].start) pri.add(node[i].h);
+                else pri.remove(node[i].h);
+                i++;
+            }
+            int cur = pri.peek()==null ? 0 :pri.peek();
+            if(pre != cur) {
+                List<Integer> c = new ArrayList<>();
+                c.add(cr.x);
+                c.add(cur);
+                res.add(c);
+                pre = cur;
+            }
+        }
+        return res;
+    }
+}
+
+//天际线问题

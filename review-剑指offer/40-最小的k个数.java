@@ -10,6 +10,7 @@ class Solution_offer_40 {
             res.add(nums[i]);
         }
         return res;
+        
     }
     private void quickSort(int[] nums, int k) {
         int l=0, r=nums.length-1;

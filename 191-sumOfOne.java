@@ -6,6 +6,9 @@ class Solution_191 {
             n = (n-1)&n;
             sum++;
         }
+
+
+        
         return sum;
     }
 }
